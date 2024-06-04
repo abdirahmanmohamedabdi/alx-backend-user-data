@@ -4,10 +4,10 @@ Route module for the API
 """
 from os import getenv
 from api.v1.views import app_views
-from api.v1.auth.auth import Auth # type: ignore
-from api.v1.auth.basic_auth import BasicAuth # type: ignore
-from flask import Flask, jsonify, abort, request # type: ignore
-from flask_cors import (CORS, cross_origin) # type: ignore
+from api.v1.auth.auth import Auth
+from api.v1.auth.basic_auth import BasicAuth
+from flask import Flask, jsonify, abort, request
+from flask_cors import (CORS, cross_origin)
 import os
 
 
@@ -41,7 +41,7 @@ def filter():
     ]
     if auth.require_auth(path, excluded_paths) is False:
         return
-    
+
     if auth.authorization_header(request) is None:
         abort(401)
 
