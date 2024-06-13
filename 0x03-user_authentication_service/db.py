@@ -80,7 +80,7 @@ class DB:
     def update_user(self, user_id: int, *args, **kwargs) -> None:
         """ update a user """
         valid_keys = ['email', 'id', 'hashed_password',
-                          'session_id', 'reset_token']
+                      'session_id', 'reset_token']
         user = self.find_user_by(id=user_id)
         for key in kwargs:
             if key not in valid_keys:
