@@ -20,7 +20,7 @@ class DB:
     def __init__(self) -> None:
         """Initialize a new DB instance
         """
-        self._engine = create_engine("sqlite:///a.db", echo=True)
+        self._engine = create_engine("sqlite:///a.db", echo=False)
         Base.metadata.drop_all(self._engine)
         Base.metadata.create_all(self._engine)
         self.__session = None
@@ -38,14 +38,14 @@ class DB:
         ''' adds a User to db '''
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
-        self._session.commit
+        self._session.commit()
         return user
 
     def find_user_by(self,  *args, **kwargs) -> User:
         ''' searches for user by kwargs '''
         if not kwargs:
             raise NoResultFound
-        valid_keys = ['email', 'id', 'hashed_password'
+        valid_keys = ['email', 'id', 'hashed_password',
                       'session_id', 'reset_token']
         for key in kwargs:
             if key not in valid_keys:
@@ -85,5 +85,5 @@ class DB:
                 for key in kwargs:
                     if key not in valid_keys:
                         raise ValueError
-                    user.__setattr_(key, kwargs[key])
+                    user.__setattr__(key, kwargs[key])
                 self._session.commit()
