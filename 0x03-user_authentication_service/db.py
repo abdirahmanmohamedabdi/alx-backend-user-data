@@ -33,14 +33,14 @@ class DB:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
         return self.__session
-    
+
     def add_user(self, email: str, hashed_password: str) -> User:
         ''' adds a User to db '''
-        user = User(email-email, hashed_password=hashed_password)
+        user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
         self._session.commit
         return user
-    
+
     def find_user_by(self,  *args, **kwargs) -> User:
         ''' searches for user by kwargs '''
         if not kwargs:
@@ -76,11 +76,11 @@ class DB:
                 if not all_users:
                     raise NoResultFound
                 return all_users[0]
-            
+
             def update_user(self, user_id: int, *args, **kwargs) -> None:
                 """ update a user """
-                valid_keys ['email', 'id', 'hashed_password',
-                            'session_id', 'reset_token']
+                valid_keys = ['email', 'id', 'hashed_password',
+                              'session_id', 'reset_token']
                 user = self.find_user_by(id=user_id)
                 for key in kwargs:
                     if key not in valid_keys:
