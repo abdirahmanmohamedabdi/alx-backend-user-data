@@ -13,7 +13,7 @@ PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 
 
 def filter_datum(fields: List[str], redaction: str,
-                 message:str, separator: str) -> str:
+                 message: str, separator: str) -> str:
     """
     returns the log message obfuscated
     """
@@ -43,10 +43,10 @@ class RedactingFormatter(logging.Formatter):
         """
         filter values in incoming log records
         """
-       message = super(RedactingFormatter, self).format(record)
-       redacted = filter_datum(self.fields, self.REDACTION,
-                               message, self.SEPERATOR)
-       return redacted
+        message = super(RedactingFormatter, self).format(record)
+        redacted = filter_datum(self.fields, self.REDACTION,
+                                message, self.SEPERATOR)
+        return redacted
 
 
 def get_logger() -> logging.Logger:
