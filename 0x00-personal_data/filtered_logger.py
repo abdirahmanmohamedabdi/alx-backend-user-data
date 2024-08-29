@@ -70,11 +70,11 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     """
     returns a connector to a database
     """
-    
-    user=os.getenv('PERSONAL_DATA_DB_USERNAME') or "root"
-    passwd=os.getenv('PERSONAL_DATA_DB_PASSWORD') or ""
-    host=os.getenv('PERSONAL_DATA_DB_HOST') or "localhost"
-    db_name=os.getenv('PERSONAL_DATA_DB_NAME')
+
+    user = os.getenv('PERSONAL_DATA_DB_USERNAME') or "root"
+    passwd = os.getenv('PERSONAL_DATA_DB_PASSWORD') or ""
+    host = os.getenv('PERSONAL_DATA_DB_HOST') or "localhost"
+    db_name = os.getenv('PERSONAL_DATA_DB_NAME')
     conn = mysql.connector.connect(user=user,
                                    password=passwd,
                                    host=host,
@@ -92,7 +92,7 @@ def main():
     cursor.execute("SELECT * FROM users")
     fields = cursor.column_names
     for row in cursor:
-        message = "".join("{}={}; ".format(k, v) for k , v in zip(fields, row))
+        message = "".join("{}={}; ".format(k, v) for k, v in zip(fields, row))
         logger.info(message.strip())
     cursor.close()
     db.close()
