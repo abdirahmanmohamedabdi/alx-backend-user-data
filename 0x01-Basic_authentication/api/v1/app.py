@@ -17,10 +17,10 @@ auth = None
 
 
 auth_type = os.getenv("AUTH_TYPE")
-if auth_type == "auth":
-    auth = Auth()
-elif auth_type == "basic_auth":
+if auth_type == "basic_auth":
     auth = BasicAuth()
+else:
+    auth = Auth()
 
 
 @app.errorhandler(401)
