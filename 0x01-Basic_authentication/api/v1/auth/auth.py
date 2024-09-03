@@ -3,6 +3,8 @@
 Auth class defined here
 """
 from flask import request
+from typing import List, TypeVar
+import re
 
 
 class Auth:
