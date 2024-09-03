@@ -33,3 +33,12 @@ def stats() -> str:
     stats = {}
     stats['users'] = User.count()
     return jsonify(stats)
+
+
+@app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
+def abort_403() -> str:
+    """ GET /api/v1/forbidden
+    Return:
+      - 403 status code
+    """
+    abort(403)
