@@ -20,7 +20,7 @@ class Auth:
             return True
 
         if path[-1] != '/':
-            path + '/'
+           path = path + '/'
         for path in excluded_paths:
             if pth[-1] == '*':
                 pth = pth[:-1] + '.*'
