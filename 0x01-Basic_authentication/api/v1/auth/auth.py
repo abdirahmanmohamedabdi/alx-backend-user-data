@@ -21,7 +21,7 @@ class Auth:
 
         if path[-1] != '/':
            path += '/'
-        for path in excluded_paths:
+        for pth in excluded_paths:
             if pth[-1] == '*':
                 pth = pth[:-1] + '.*'
             if re.fullmatch(pth, path):
