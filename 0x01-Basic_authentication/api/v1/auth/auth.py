@@ -14,7 +14,7 @@ class Auth:
     ) -> bool:
         """Require auth method
         """
-        if path is None or nor excluded_paths:
+        if path is None or not excluded_paths:
             return True
 
         if path[-1] != '/':
