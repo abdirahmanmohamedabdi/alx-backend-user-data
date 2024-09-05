@@ -56,7 +56,7 @@ def handle_login() -> str:
 
 
 @app_views.route('/auth_session/logout', methods=['DELETE'],
-                    strict_slashes=False)
+                 strict_slashes=False)
 def handle_logout() -> str:
     """ handles logout
     """
