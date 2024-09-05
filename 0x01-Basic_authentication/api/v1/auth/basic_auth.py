@@ -9,6 +9,7 @@ from models.user import User
 
 UserType = TypeVar('UserType')
 
+
 class BasicAuth(Auth):
     """BasicAuth class
     """
