@@ -42,13 +42,16 @@ def delete_user(user_id: str = None) -> str:
       - empty JSON is the User has been correctly deleted
       - 404 if the User ID doesn't exist
     """
-    if user_id is None:
-        abort(404)
-    user = User.get(user_id)
-    if user is None:
-        abort(404)
-    user.remove()
-    return jsonify({})
+    if user_id == "me":
+        if request.current_user is None:
+            abort(404)
+        return jsonify(request.current_user.to.dict())
+
+        # Normal behaviour
+        user = User.get(user_id)
+        if user is None:
+            abort(404)
+        return jsonify(user.to_dict())
 
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
