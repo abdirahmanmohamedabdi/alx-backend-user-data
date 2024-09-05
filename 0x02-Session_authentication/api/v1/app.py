@@ -46,6 +46,8 @@ def forbidden(error) -> str:
 def before_request():
     """ Before request
     """
+    if auth:
+        request.current_user = auth.current_user(request)
     if auth is None:
         return
     excluded_paths = ['/api/v1/status/', '/api/v1/unauthorized/',
