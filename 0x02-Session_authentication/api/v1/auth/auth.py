@@ -44,3 +44,12 @@ class Auth:
         """Current user method
         """
         return None
+
+    def session_cookie(self, request=None):
+        """Session cookie method
+        """
+        if request is None:
+            return None
+
+        session_name = request.cookies.get('SESSION_NAME')
+        return request.cookies.get(session_name)
