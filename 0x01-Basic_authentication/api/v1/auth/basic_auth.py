@@ -6,6 +6,7 @@ import base64
 from api.v1.auth.auth import Auth
 from typing import TypeVar, Optional
 from models.user import User
+import binascii
 
 UserType = TypeVar('UserType')
 
