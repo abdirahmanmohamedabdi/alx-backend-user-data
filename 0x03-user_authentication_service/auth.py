@@ -28,7 +28,7 @@ class Auth:
 
     def register_user(self, email: str, password: str) -> User:
         """ register a user """
-        User_exists = Flsae
+        User_exists = False
         try:
             existing_user = self._db.find_user_by(email=email)
             User_exists = True
