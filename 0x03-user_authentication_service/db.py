@@ -53,15 +53,25 @@ class DB:
         query = self._session.query(User)
         for key in kwargs:
             if key == 'email':
-                query = query.filter(User.email == kwargs[key])
+                query = query.filter(
+                            User.email == kwargs[key]
+                            )
             elif key == 'id':
-                query = query.filter(User.id == kwargs[key])
+                query = query.filter(
+                            User.id == kwargs[key]
+                            )
             elif key == 'hashed_password':
-                query = query.filter(User.hashed_password == kwargs[key])
+                query = query.filter(
+                            User.hashed_password == kwargs[key]
+                            )
             elif key == 'session_id':
-                query = query.filter(User.session_id == kwargs[key])
+                query = query.filter(
+                            User.session_id == kwargs[key]
+                            )
             elif key == 'reset_token':
-                query = query.filter(User.reset_token == kwargs[key])
+                query = query.filter(
+                            User.reset_token == kwargs[key]
+                            )
         all_users = query.all()
         if not all_users:
             raise NoResultFound
