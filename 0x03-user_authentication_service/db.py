@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 from typing import TypeVar, Type, Mapping, Dict
 from sqlalchemy.orm.exc import NoResultFound
-fro, sqlalchemy.exc import InvalidRequestError
+from sqlalchemy.exc import InvalidRequestError
 
 from user import Base, User
 
