@@ -50,7 +50,7 @@ class DB:
         for key in kwargs:
             if key not in valid_keys:
                 raise InvalidRequestError
-        query = self._session.query(User).
+        query = self._session.query(User)
         for key in kwargs:
             if key == 'email':
                 query = query.filter(User.email == kwargs[key])
