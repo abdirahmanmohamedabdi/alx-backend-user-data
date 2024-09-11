@@ -36,7 +36,7 @@ def login():
     """ handles login """
     email = request.form.get('email')
     passwd = request.form.get('password')
-    if AUTH.valid_login(email, password) is False:
+    if AUTH.valid_login(email, passwd) is False:
         abort(401)
     sess_id = AUTH.create_session(email)
     resp = jsonify({"email": f"{email}", "message": "logged in"})
@@ -78,7 +78,7 @@ def get_reset_password_token() -> str:
 
 
 @app.route('/reset_password', methods=['PUT'], strict_slashes=False)
-def update_password():
+def update_password() -> str:
     """ handles reset password """
     email = request.form.get('email')
     r_token = request.form.get('reset_token')
