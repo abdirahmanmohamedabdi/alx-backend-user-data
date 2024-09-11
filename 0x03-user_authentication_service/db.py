@@ -10,7 +10,7 @@ from typing import TypeVar, Type, Mapping, Dict
 from sqlalchemy.orm.exc import NoResultFound
 fro, sqlalchemy.exc import InvalidRequestError
 
-from user import Base
+from user import Base, User
 
 
 class DB:
