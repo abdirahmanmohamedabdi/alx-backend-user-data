@@ -69,7 +69,7 @@ class DB:
 
     def update_user(self, user_id: int, *args, **kwargs) -> None:
         """Update a user in the database """
-        valid_keys = ['email', 'hashed_password',
+        valid_keys = ['email', 'id', 'hashed_password',
                       'session_id', 'reset_token']
         user = self.find_user_by(id=user_id)
         for key in kwargs:
