@@ -19,7 +19,7 @@ def index():
 def users():
     """ handles credentials """
     email = request.form.get('email')
-    password = request.form.get('password')
+    passwd = request.form.get('password')
     try:
         user = AUTH.register_user(email, passwd)
         return jsonify({
@@ -35,7 +35,7 @@ def users():
 def login():
     """ handles login """
     email = request.form.get('email')
-    password = request.form.get('password')
+    passwd = request.form.get('password')
     if AUTH.valid_login(email, password) is False:
         abort(401)
     sess_id = AUTH.create_session(email)
@@ -52,7 +52,7 @@ def logout():
     if not user:
         abort(403)
 
-    AUTH.destroy_session(user.id)
+    AUTH.destroy_session(sess_id)
     return redirect(url_for('index'))
 
 
@@ -67,7 +67,7 @@ def profile():
 
 
 @app.route('/reset_password', methods=['POST'], strict_slashes=False)
-def get_reset_password_token():
+def get_reset_password_token() -> str:
     """ handles reset password """
     email = request.form.get('email')
     try:
